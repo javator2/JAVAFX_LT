@@ -5,6 +5,7 @@ import com.sda.javafx.model.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -63,5 +64,22 @@ public class Main extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void  loadPersonEdit() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("/PersonEdit.fxml"));
+        VBox window = null;
+        try {
+            window = (VBox) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage editStage = new Stage();
+        editStage.setTitle("edytuj osobę");
+        Scene scene = new Scene(window);
+        editStage.setScene(scene);
+        editStage.show();
     }
 }

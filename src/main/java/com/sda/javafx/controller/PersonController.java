@@ -4,6 +4,7 @@ package com.sda.javafx.controller;
 import com.sda.javafx.Main;
 import com.sda.javafx.model.Person;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -38,6 +39,16 @@ public class PersonController {
 
     @FXML
     private TableColumn<Person, String> lastNameCol;
+
+    @FXML
+    private Button newButton;
+
+    @FXML
+    public void handleNewButton() {
+        System.out.println("test");
+        this.main.loadPersonEdit();
+    }
+
 
     @FXML
     public void initialize() {
