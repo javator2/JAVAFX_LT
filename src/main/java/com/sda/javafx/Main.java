@@ -66,7 +66,24 @@ public class Main extends Application {
         }
     }
 
-    public void  loadPersonEdit() {
+    public void loadNewPerson() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(Main.class.getResource("/NewPerson.fxml"));
+        VBox window = null;
+        try {
+            window = (VBox) loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage newPersonStage = new Stage();
+        newPersonStage.setTitle("dodaj nową osobę");
+        Scene scene = new Scene(window);
+        newPersonStage.setScene(scene);
+        newPersonStage.show();
+    }
+
+    public void loadPersonEdit() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/PersonEdit.fxml"));
         VBox window = null;

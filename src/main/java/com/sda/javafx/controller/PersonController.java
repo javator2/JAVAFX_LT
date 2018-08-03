@@ -46,6 +46,12 @@ public class PersonController {
     @FXML
     public void handleNewButton() {
         System.out.println("test");
+        this.main.loadNewPerson();
+    }
+
+    @FXML
+    public void handleEditButton() {
+        System.out.println("test");
         this.main.loadPersonEdit();
     }
 
