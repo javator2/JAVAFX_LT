@@ -1,70 +1,71 @@
 package com.sda.javafx.model;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 public class Person {
 
-   private StringProperty name;
-   private StringProperty lastName;
-   private StringProperty street;
-   private StringProperty city;
-   private StringProperty postalCode;
-   private StringProperty telephone;
+   private String name;
+   private String lastName;
+   private String street;
+   private String city;
+   private String postalCode;
+   private String telephone;
 
     public Person() {
     }
 
-    public Person(String name, String lastName) {
-        this.name = new SimpleStringProperty(name);
-        this.lastName = new SimpleStringProperty(lastName);
+    public Person(String name, String lastName, String street, String city, String postalCode, String telephone) {
+        this.name = name;
+        this.lastName = lastName;
+        this.street = street;
+        this.city = city;
+        this.postalCode = postalCode;
+        this.telephone = telephone;
     }
 
     public String getName() {
-        return name.get();
-    }
-
-    public StringProperty nameProperty() {
         return name;
     }
 
-    public String getLastName() {
-        return lastName.get();
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public StringProperty lastNameProperty() {
+    public String getLastName() {
         return lastName;
     }
 
-    public String getStreet() {
-        return street.get();
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public StringProperty streetProperty() {
+    public String getStreet() {
         return street;
     }
 
-    public String getCity() {
-        return city.get();
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public StringProperty cityProperty() {
+    public String getCity() {
         return city;
     }
 
-    public String getPostalCode() {
-        return postalCode.get();
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public StringProperty postalCodeProperty() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public String getTelephone() {
-        return telephone.get();
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
-    public StringProperty telephoneProperty() {
+    public String getTelephone() {
         return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 }

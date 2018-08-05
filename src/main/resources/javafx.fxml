@@ -99,12 +99,12 @@
                               <Label text="Miasto" GridPane.rowIndex="3" />
                               <Label text="Kod pocztowy" GridPane.rowIndex="4" />
                               <Label text="Numer telefonu" GridPane.rowIndex="5" />
-                              <Label text="Label" fx:id="firstNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <Label text="Label" fx:id="lastNameLabel" GridPane.columnIndex="1" />
-                              <Label text="Label" fx:id="streetLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                              <Label text="Label" fx:id="cityLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <Label text="Label" fx:id="postalCodeLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                              <Label text="Label" fx:id="telephoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <Label text="-" fx:id="firstNameLabel" GridPane.columnIndex="1" />
+                              <Label text="-" fx:id="lastNameLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                              <Label text="-" fx:id="streetLabel" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label text="-" fx:id="cityLabel" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label text="-" fx:id="postalCodeLabel" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label text="-" fx:id="telephoneLabel" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
                         <Label layoutX="74.0" layoutY="6.0" text="Szczegóły pracownika" />
@@ -112,7 +112,7 @@
                           <buttons>
                             <Button onAction="#handleNewButton" mnemonicParsing="false" text="Nowy" />
                               <Button onAction="#handleEditButton" mnemonicParsing="false" text="Edytuj" />
-                              <Button mnemonicParsing="false" text="Usuń" />
+                              <Button onAction="#handleDeleteButton" mnemonicParsing="false" text="Usuń" />
                           </buttons>
                         </ButtonBar>
                      </children>
