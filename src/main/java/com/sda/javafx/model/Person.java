@@ -2,14 +2,15 @@ package com.sda.javafx.model;
 
 public class Person {
 
-   private String name;
-   private String lastName;
-   private String street;
-   private String city;
-   private String postalCode;
-   private String telephone;
+    private String name;
+    private String lastName;
+    private String street;
+    private String city;
+    private String postalCode;
+    private String telephone;
 
     public Person() {
+        this(null, null, null, null, null, null);
     }
 
     public Person(String name, String lastName, String street, String city, String postalCode, String telephone) {

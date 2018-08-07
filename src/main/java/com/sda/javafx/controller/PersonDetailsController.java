@@ -1,5 +1,6 @@
 package com.sda.javafx.controller;
 
+import com.sda.javafx.Main;
 import com.sda.javafx.model.PersonFX;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -7,6 +8,10 @@ import javafx.stage.Stage;
 
 
 public class PersonDetailsController {
+
+    private Main main;
+    private PersonFX personFX;
+    private Stage stage;
 
     @FXML
     private TextField name;
@@ -26,11 +31,6 @@ public class PersonDetailsController {
     @FXML
     private TextField telephoneNumber;
 
-    @FXML
-    private PersonFX person;
-
-    @FXML
-    private Stage stage;
 
     @FXML
     public void initialize() {
@@ -41,28 +41,32 @@ public class PersonDetailsController {
         this.stage = stage;
     }
 
-    public void setPerson (PersonFX person) {
+    public void setMain(Main main) {
+        this.main = main;
+    }
 
-        this.person =person;
-        name.setText(person.getName());
-        lastname.setText(person.getLastName());
-        street.setText(person.getStreet());
-        city.setText(person.getCity());
-        postalCode.setText(person.getPostalCode());
-        telephoneNumber.setText(person.getTelephone());
+    public void setPersonFX(PersonFX personFX) {
+        this.personFX = personFX;
+        name.setText(personFX.getName());
+        lastname.setText(personFX.getLastName());
+        street.setText(personFX.getStreet());
+        city.setText(personFX.getCity());
+        postalCode.setText(personFX.getPostalCode());
+        telephoneNumber.setText(personFX.getTelephone());
     }
 
     public void handleOk() {
-        person.setName(name.getText());
-        person.setLastName(lastname.getText());
-        person.setCity(city.getText());
-        person.setStreet(street.getText());
-        person.setPostalCode(postalCode.getText());
-        person.setTelephone(telephoneNumber.getText());
+        personFX.setName(name.getText());
+        personFX.setLastName(lastname.getText());
+        personFX.setCity(city.getText());
+        personFX.setStreet(street.getText());
+        personFX.setPostalCode(postalCode.getText());
+        personFX.setTelephone(telephoneNumber.getText());
         this.stage.close();
     }
 
     public void handleCancel() {
         this.stage.close();
     }
+
 }

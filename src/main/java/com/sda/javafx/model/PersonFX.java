@@ -22,6 +22,7 @@ public class PersonFX {
     }
 
     public PersonFX() {
+        this(null, null, null, null, null, null);
     }
 
     public String getName() {

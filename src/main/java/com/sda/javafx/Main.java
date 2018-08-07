@@ -23,26 +23,26 @@ public class Main extends Application {
     private Stage stage;
     private VBox layout;
 
-    public ObservableList<PersonFX> getPersonList() {
-        return personList;
+    public ObservableList<PersonFX> getPersonFXList() {
+        return personFXList;
     }
 
-    private ObservableList<PersonFX> personList = FXCollections.observableArrayList();
-    private List<PersonFX> personFXlist = new ArrayList<>();
+    private ObservableList<PersonFX> personFXList = FXCollections.observableArrayList();
+    private List<Person> personList = new ArrayList<Person>();
 
     public Main() throws IOException {
-        personFXlist.add(new PersonFX("Jan", "Kowalski", "Mickiewicza", "Poznań", "78-109", "555444222"));
-        personFXlist.add(new PersonFX("Piotr", "Nowak", "Lubicka", "Toruń", "87-100", "111222333"));
-        personFXlist.add(new PersonFX("Adam", "Nowakowski", "Mickiewicza", "Poznań", "78-109", "555444222"));
-        personFXlist.add(new PersonFX("Anna", "Wiśniewska", "Lubicka", "Toruń", "87-100", "111222333"));
-        personFXlist.add(new PersonFX("Krzysztof", "Zanussi", "Mickiewicza", "Poznań", "78-109", "555444222"));
-        personFXlist.add(new PersonFX("Barbara", "Barbarowska", "Lubicka", "Toruń", "87-100", "111222333"));
+        personList.add(new Person("Jan", "Kowalski", "Mickiewicza", "Poznań", "78-109", "555444222"));
+        personList.add(new Person("Piotr", "Nowak", "Lubicka", "Toruń", "87-100", "111222333"));
+        personList.add(new Person("Adam", "Nowakowski", "Mickiewicza", "Poznań", "78-109", "555444222"));
+        personList.add(new Person("Anna", "Wiśniewska", "Lubicka", "Toruń", "87-100", "111222333"));
+        personList.add(new Person("Krzysztof", "Zanussi", "Mickiewicza", "Poznań", "78-109", "555444222"));
+        personList.add(new Person("Barbara", "Barbarowska", "Lubicka", "Toruń", "87-100", "111222333"));
 
 
         ObjectMapper mapper = new ObjectMapper();
         File fileName = new File("pracownicy.json");
         fileName.createNewFile();
-        mapper.writeValue(fileName, personFXlist);
+        mapper.writeValue(fileName, personList);
 
         Person[] readPerson = mapper.readValue(new File("pracownicy.json"), Person[].class);
 
@@ -50,7 +50,7 @@ public class Main extends Application {
 
         for (Person p : readPerson) {
             System.out.println(p.getName());
-            personList.add(new PersonFX(p.getName(), p.getLastName(), p.getStreet(), p.getCity(), p.getPostalCode(), p.getTelephone()));
+            personFXList.add(new PersonFX(p.getName(), p.getLastName(), p.getStreet(), p.getCity(), p.getPostalCode(), p.getTelephone()));
         }
     }
 
@@ -82,7 +82,7 @@ public class Main extends Application {
         }
     }
 
-    public void loadNewPerson() {
+    public void loadNewPerson(PersonFX personFX) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/NewPerson.fxml"));
         VBox window = null;
@@ -92,21 +92,25 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
+        PersonDetailsController personDetails = loader.getController();
+        personDetails.setMain(this);
         Stage newPersonStage = new Stage();
+        personDetails.setStage(newPersonStage);
+        personDetails.setPersonFX(personFX);
         newPersonStage.setTitle("dodaj nowego pracownika");
         Scene scene = new Scene(window);
         newPersonStage.setScene(scene);
         newPersonStage.show();
     }
 
-    public void loadPersonEdit(PersonFX person) {
+    public void loadPersonEdit(PersonFX personFX) {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(Main.class.getResource("/PersonEdit.fxml"));
         VBox window = null;
         try {
             window = (VBox) loader.load();
             PersonDetailsController personDetails = loader.getController();
-            personDetails.setPerson(person);
+            personDetails.setPersonFX(personFX);
             Stage stage = new Stage();
         } catch (IOException e) {
             e.printStackTrace();
@@ -119,7 +123,6 @@ public class Main extends Application {
         Scene scene = new Scene(window);
         editStage.setScene(scene);
         editStage.show();
-
     }
 
     public Stage getStage() {
